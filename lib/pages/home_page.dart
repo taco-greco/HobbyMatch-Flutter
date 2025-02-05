@@ -1,36 +1,66 @@
 import 'package:flutter/material.dart';
-import 'package:hobbymatch/pages/detail_page.dart';
+import '../models/hobby.dart';
+import '../services/api_service.dart';
+import 'detail_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  late Future<List<Hobby>> futureHobbies;
+
+  @override
+  void initState() {
+    super.initState();
+    futureHobbies = ApiService.fetchHobbies();
+  }
+
   @override
   Widget build(BuildContext context) {
-    // Fake data and API data after
-    List<Map<String, String>> entities = [
-      {"id": "1", "name": "Entity 1"},
-      {"id": "2", "name": "Entity 2"},
-      {"id": "3", "name": "Entity 3"},
-    ];
-
     return Scaffold(
-      appBar: AppBar(title: const Text("Entities List")),
-      body: ListView.builder(
-        itemCount: entities.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(entities[index]["name"]!),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => DetailPage(entity: entities[index]),
-                ),
+      appBar: AppBar(title: const Text("Hobbies List")),
+      body: FutureBuilder<List<Hobby>>(
+        future: futureHobbies,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (snapshot.hasError) {
+            return Center(child: Text("Error: ${snapshot.error}"));
+          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+            return const Center(child: Text("No hobbies found"));
+          }
+
+          List<Hobby> hobbies = snapshot.data!;
+
+          return ListView.builder(
+            itemCount: hobbies.length,
+            itemBuilder: (context, index) {
+              Hobby hobby = hobbies[index];
+
+              return ListTile(
+                leading: hobby.imageFileName != null
+                    ? Image.network(
+                  "http://hobbymatch.localhost/${hobby.imageRepository}/${hobby.imageFileName}",
+                  width: 50,
+                  height: 50,
+                  errorBuilder: (context, error, stackTrace) =>
+                  const Icon(Icons.image_not_supported),
+                )
+                    : const Icon(Icons.image),
+                title: Text(hobby.titre),
+                subtitle: Text("Author: ${hobby.auteur}"),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DetailPage(entity: hobby),
+                    ),
+                  );
+                },
               );
             },
           );

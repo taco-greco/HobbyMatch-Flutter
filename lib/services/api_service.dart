@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import '../models/hobby.dart';
 
 class ApiService {
-  static const String baseUrl = "http://192.168.1.14:8000/index.php?url=ApiHobby/getAll";
+  static const String baseUrl = "http://10.0.2.2:8000/ApiHobby/getAll";
 
   static Future<List<Hobby>> fetchHobbies() async {
     try {

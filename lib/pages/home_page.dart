@@ -44,9 +44,8 @@ class _HomePageState extends State<HomePage> {
               return ListTile(
                 leading: hobby.imageFileName != null
                     ? Image.network(
-                  "http://hobbymatch.localhost/${hobby.imageRepository}/${hobby.imageFileName}",
-                  width: 50,
-                  height: 50,
+                  "http://10.0.2.2:8000/uploads/images/${hobby.imageRepository}/${hobby.imageFileName}",
+                  height: 300,
                   errorBuilder: (context, error, stackTrace) =>
                   const Icon(Icons.image_not_supported),
                 )

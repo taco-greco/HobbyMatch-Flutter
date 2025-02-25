@@ -5,9 +5,9 @@ import '../models/hobby.dart';
 class ApiService {
   static const String baseUrl = "http://10.0.2.2:8000/ApiHobby/getAll";
 
-  static Future<List<Hobby>> fetchHobbies() async {
+  static Future<List<Hobby>> fetchHobbies(int page) async {
     try {
-      final response = await http.get(Uri.parse(baseUrl));
+      final response = await http.get(Uri.parse('$baseUrl/page/$page'));
 
       if (response.statusCode == 200) {
         List<dynamic> data = json.decode(response.body);

@@ -7,7 +7,7 @@ class ApiService {
 
   static Future<List<Hobby>> fetchHobbies(int page) async {
     try {
-      final response = await http.get(Uri.parse('$baseUrl/page/$page'));
+      final response = await http.get(Uri.parse('$baseUrl/$page'));
 
       if (response.statusCode == 200) {
         List<dynamic> data = json.decode(response.body);

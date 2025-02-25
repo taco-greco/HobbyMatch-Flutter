@@ -56,6 +56,8 @@ class _DetailPageState extends State<DetailPage> {
             )
                 : const SizedBox(),
             const SizedBox(height: 10),
+            Text("Author: ${widget.entity.id}", style: const TextStyle(fontSize: 18)),
+            const SizedBox(height: 10),
             Text("Author: ${widget.entity.auteur}", style: const TextStyle(fontSize: 18)),
             const SizedBox(height: 10),
             Text("Description:\n${widget.entity.description}", style: const TextStyle(fontSize: 16)),

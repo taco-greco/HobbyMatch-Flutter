@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hobbymatch/pages/add_hobby_page.dart';
 import '../models/hobby.dart';
 import '../services/api_service.dart';
 import 'detail_page.dart';
@@ -81,7 +82,18 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Hobbies')),
+      appBar: AppBar(
+          title: const Text('Hobbies'),
+        actions: [
+          IconButton(onPressed: (){
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context)=>const AddHobbyPage())
+            );
+          }
+              , icon: const Icon(Icons.add))
+        ],
+      ),
       body: _isLoading && _hobbies.isEmpty
           ? const Center(child: CircularProgressIndicator())
           : ListView.builder(

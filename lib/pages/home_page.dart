@@ -28,6 +28,7 @@ class _HomePageState extends State<HomePage> {
   Future<void> _fetchHobbies() async {
     setState(() {
       _isLoading = true;
+      _currentPage = 1; // Reset to the first page
     });
 
     try {
@@ -73,6 +74,18 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  Future<void> _navigateToAddHobbyPage() async {
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const AddHobbyPage()),
+    );
+
+    if (result == true) {
+      _scrollController.jumpTo(0); // Reset scroll position to the top
+      _fetchHobbies(); // Refresh the list of hobbies
+    }
+  }
+
   @override
   void dispose() {
     _scrollController.dispose();
@@ -83,15 +96,12 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: const Text('Hobbies'),
+        title: const Text('Hobbies'),
         actions: [
-          IconButton(onPressed: (){
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context)=>const AddHobbyPage())
-            );
-          }
-              , icon: const Icon(Icons.add))
+          IconButton(
+            onPressed: _navigateToAddHobbyPage,
+            icon: const Icon(Icons.add),
+          ),
         ],
       ),
       body: _isLoading && _hobbies.isEmpty
@@ -108,8 +118,8 @@ class _HomePageState extends State<HomePage> {
             leading: hobby.imageFileName != null
                 ? Image.network(
               "http://10.0.2.2:8000/uploads/images/${hobby.imageRepository}/${hobby.imageFileName}",
-              width: 50,
-              height: 50,
+              width: 100,
+              height: 100,
               fit: BoxFit.cover,
               errorBuilder: (context, error, stackTrace) =>
               const Icon(Icons.image_not_supported),

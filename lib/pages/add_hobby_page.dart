@@ -1,8 +1,10 @@
+// lib/pages/add_hobby_page.dart
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:hobbymatch/models/device_info.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
+import 'home_page.dart';
 
 class AddHobbyPage extends StatefulWidget {
   final String token;
@@ -69,7 +71,11 @@ class _AddHobbyPageState extends State<AddHobbyPage> {
       );
 
       if (response.statusCode == 200) {
-        Navigator.pop(context, true); // Return to the previous page with a result
+        Navigator.popUntil(context, (route) => route.isFirst);
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const HomePage()),
+        );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Failed to submit form: ${response.statusCode}')),

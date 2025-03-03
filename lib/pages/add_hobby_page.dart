@@ -5,7 +5,9 @@ import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
 
 class AddHobbyPage extends StatefulWidget {
-  const AddHobbyPage({super.key});
+  final String token;
+
+  const AddHobbyPage({super.key, required this.token});
 
   @override
   State<AddHobbyPage> createState() => _AddHobbyPageState();
@@ -20,7 +22,6 @@ class _AddHobbyPageState extends State<AddHobbyPage> {
   final _prixController = TextEditingController();
   final _emailController = TextEditingController();
   String? _base64Image;
-
 
   Future<void> _pickImageFromGallery() async {
     final picker = ImagePicker();
@@ -50,7 +51,10 @@ class _AddHobbyPageState extends State<AddHobbyPage> {
     try {
       final response = await http.post(
         Uri.parse('http://10.0.2.2:8000/ApiHobby/add'),
-        headers: {'Content-Type': 'application/json'},
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ${widget.token}',
+        },
         body: jsonEncode({
           'Titre': _titreController.text,
           'Auteur': _auteurController.text,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hobbymatch/pages/add_hobby_page.dart';
+import 'package:hobbymatch/pages/login.dart';
 import '../models/hobby.dart';
 import '../services/api_service.dart';
 import 'detail_page.dart';
@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
   Future<void> _fetchHobbies() async {
     setState(() {
       _isLoading = true;
-      _currentPage = 1; // Reset to the first page
+      _currentPage = 1;
     });
 
     try {
@@ -74,16 +74,11 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  Future<void> _navigateToAddHobbyPage() async {
-    final result = await Navigator.push(
+  Future<void> _navigateToLoginPage() async {
+    await Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const AddHobbyPage()),
+      MaterialPageRoute(builder: (context) => const Login()),
     );
-
-    if (result == true) {
-      _scrollController.jumpTo(0); // Reset scroll position to the top
-      _fetchHobbies(); // Refresh the list of hobbies
-    }
   }
 
   @override
@@ -99,8 +94,8 @@ class _HomePageState extends State<HomePage> {
         title: const Text('Hobbies'),
         actions: [
           IconButton(
-            onPressed: _navigateToAddHobbyPage,
-            icon: const Icon(Icons.add),
+            onPressed: _navigateToLoginPage,
+            icon: const Icon(Icons.login),
           ),
         ],
       ),

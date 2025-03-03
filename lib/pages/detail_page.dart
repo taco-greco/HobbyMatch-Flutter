@@ -42,7 +42,7 @@ class _DetailPageState extends State<DetailPage> {
             const SizedBox(height: 10),
             Text("Published on: ${widget.entity.datePublication}", style: const TextStyle(fontSize: 14)),
             const SizedBox(height: 10),
-            if (widget.entity.prix != null) Text("Price: \$${widget.entity.prix}", style: const TextStyle(fontSize: 14)),
+            if (widget.entity.prix != null) Text("Price: \€${widget.entity.prix}", style: const TextStyle(fontSize: 14)),
             if (widget.entity.emailContact != null) Text("Contact: ${widget.entity.emailContact}", style: const TextStyle(fontSize: 14)),
             if (widget.entity.latitude != null && widget.entity.longitude != null)
               Column(

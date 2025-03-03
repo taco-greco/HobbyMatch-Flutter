@@ -103,6 +103,21 @@ class _AddHobbyPageState extends State<AddHobbyPage> {
               TextFormField(
                 controller: _dateController,
                 decoration: const InputDecoration(labelText: 'Date Publication'),
+                readOnly: true,
+                onTap: () async {
+                  DateTime? pickedDate = await showDatePicker(
+                    context: context,
+                    initialDate: DateTime.now(),
+                    firstDate: DateTime(2000),
+                    lastDate: DateTime(2101),
+                  );
+
+                  if (pickedDate != null) {
+                    setState(() {
+                      _dateController.text = pickedDate.toLocal().toString().split(' ')[0];
+                    });
+                  }
+                },
               ),
               TextFormField(
                 controller: _prixController,

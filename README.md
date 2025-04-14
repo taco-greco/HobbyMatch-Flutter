@@ -18,34 +18,14 @@ This is the Flutter frontend for the **HobbyMatch** platform, which connects peo
 
 ### Home Screen
 ![Home Screen](screenshots/home.png)
-<div style="display: flex; justify-content: center;">
-<img src="screenshots/home.png" alt="Home Screen" style="max-height: 200px; width: auto;">
-</div>
-<br>
-*(Consider resizing the actual image file for optimal loading.  This `max-height` style limits the display size, not the file size.)*
 
 ### Show Hobby
 ![Hobby](screenshots/show.png)
-<div style="display: flex; justify-content: center;">
-<img src="screenshots/show.png" alt="Hobby" style="max-height: 200px; width: auto;">
-</div>
-<br>
-*(Consider resizing the actual image file for optimal loading.  This `max-height` style limits the display size, not the file size.)*
 
 ### Login Page
 ![Login Page](screenshots/login.png)
-<div style="display: flex; justify-content: center;">
-<img src="screenshots/login.png" alt="Login Page" style="max-height: 200px; width: auto;">
-</div>
-<br>
-*(Consider resizing the actual image file for optimal loading.  This `max-height` style limits the display size, not the file size.)*
 
 ### Form Add Hobby
-![Add Hobby](screenshots/form.png)
-<div style="display: flex; justify-content: center;">
-<img src="screenshots/form.png" alt="Add Hobby" style="max-height: 200px; width: auto;">
-</div>
-<br>
 
 ## 🚀 Getting Started
 

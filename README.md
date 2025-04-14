@@ -16,16 +16,18 @@ This is the Flutter frontend for the **HobbyMatch** platform, which connects peo
 
 ## 📸 Screenshots
 
-> Add your app screenshots here:
-- Home screen
-- Match list
-- Profile page
+## Home Screen
+![Home Screen](screenshots/home.png)
 
-```
-screenshots/home.png
-screenshots/matches.png
-screenshots/profile.png
-```
+### show Hobby
+![Hobby](screenshots/show.png)
+
+### Login Page
+![Login Page](screenshots/login.png)
+
+### Form Add Hobby
+![Add Hobby](screenshots/form.png)
+
 
 ## 🚀 Getting Started
 

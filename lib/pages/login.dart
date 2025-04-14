@@ -18,10 +18,13 @@ class _LoginState extends State<Login> {
   Future<void> _login() async {
     if (_formKey.currentState?.validate() ?? false) {
       try {
+        print('Email: ${_emailController.text}');
+        print('Password: ${_passwordController.text}');
         String token = await ApiService.login(
           _emailController.text,
           _passwordController.text,
         );
+        print('Token: $token');
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -29,6 +32,7 @@ class _LoginState extends State<Login> {
           ),
         );
       } catch (e) {
+        print('Login error: $e');
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Login failed: $e')),
         );

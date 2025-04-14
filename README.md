@@ -1,16 +1,72 @@
-# hobbymatch
+# HobbyMatch Flutter App
 
-A new Flutter project.
+This is the Flutter frontend for the **HobbyMatch** platform, which connects people based on shared hobbies and interests. It consumes data from the HobbyMatch PHP MVC API.
 
-## Getting Started
+## 🌐 Backend API
 
-This project is a starting point for a Flutter application.
+👉 [HobbyMatch PHP MVC API](https://github.com/taco-greco/HobbyMatch-PHP-MVC-API)
 
-A few resources to get you started if this is your first Flutter project:
+## 🧱 Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- 🔐 User authentication with JWT
+- 🧑‍🤝‍🧑 Profile creation and hobby selection
+- 🧠 Hobby-based user matching
+- 📲 Clean and responsive UI
+- 🌙 Dark mode support (if applicable)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 📸 Screenshots
+
+> Add your app screenshots here:
+- Home screen
+- Match list
+- Profile page
+
+```
+screenshots/home.png
+screenshots/matches.png
+screenshots/profile.png
+```
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Flutter 3.x
+- Android Studio or VS Code with Flutter plugin
+
+### Installation
+
+1. Clone the repository
+   ```bash
+   git clone https://github.com/taco-greco/HobbyMatch-Flutter.git
+   cd HobbyMatch-Flutter
+   ```
+
+2. Install dependencies
+   ```bash
+   flutter pub get
+   ```
+
+3. Set up environment variables  
+   Update the `baseUrl` in your API service files if needed to match your PHP backend.
+
+4. Run the app
+   ```bash
+   flutter run
+   ```
+
+## 📂 Project Structure
+
+- `lib/` – Main Flutter code
+- `models/` – Data models
+- `services/` – API calls
+- `screens/` – UI screens
+- `widgets/` – Reusable components
+
+## 🧑‍💻 Author
+
+- GitHub: [taco-greco](https://github.com/taco-greco)
+
+## 📄 License
+
+MIT License – feel free to use, modify, and contribute!
